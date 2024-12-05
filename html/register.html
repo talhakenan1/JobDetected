@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>JobDetect</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-color: mintcream">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" name="form" id="form">
+					<span class="login100-form-logo" style="background-color: transparent;">
+						<img src="/images/iconizer-logo.png" width="120px" height="120px"/>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Register
+					</span>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter name">
+						<input class="input100" type="text" required name="name" placeholder="Name" id="name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+						<input class="input100" required type="email" name="email" placeholder="Email" id="email">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" required type="password" name="password" placeholder="Password" id="password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" required type="password" name="repeat_password" placeholder="Repeat password" id="repeat_password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+					<label id="registerErrorMessage">Something went wrong</label>
+
+					<div class="container-login100-form-btn">
+						<button id="registerBtn" class="login100-form-btn" type="button">
+							Create Account
+						</button>
+					</div>
+
+					<div class="text-center p-t-90">
+						<a class="txt1" href="/login">
+							Already have an account? Login
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/js/register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+@font-face {
+    font-family: Poppins-Light;
+    src: url('../fonts/poppins/Poppins-Light.ttf');
+
+}@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../fonts/poppins/Poppins-SemiBold.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins-Medium;
+}
+
+nav {
+    background: #9152f8;
+    text-transform: uppercase;
+    font-family: Poppins-Medium;
+    height: 80px;
+    width: 100%;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+    padding: 0 8vw 0 8vw;
+    justify-content: space-between;
+}
+
+#logo-container{
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+}
+
+label.logo {
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 30px;
+    font-weight: bold;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+a:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 952px) {
+    label.logo {
+        font-size: 30px;
+        padding-left: 50px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+    nav {
+        padding-right: 2vw;
+    }
+    label.logo{
+        padding: 0 5vw;
+    }
+}
+
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+    }
+
+    ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    a:hover,
+    a.active {
+        background: none;
+        color: #9152f8;
+    }
+
+    #check:checked~ul {
+        left: 0;
+    }
+}
+
+section {
+    background: url(bg1.jpg) no-repeat;
+    background-size: cover;
+    height: calc(100vh - 80px);
+}
+
+
+h1{
+    text-align: center;
+    margin-top: 5vh;
+}
+.multiline{
+    height: 20vh;
+    resize: none;
+}
+
+.highlight {
+    color: red
+}
+/* Styling the Form (Color, Padding, Shadow) */
+form {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling form-control Class */
+.form-control {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+/* Styling form-control Label */
+.form-control label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styling form-control input,
+        select, textarea */
+.form-control input,
+.form-control select,
+.form-control textarea {
+    background-color: gainsboro;
+    color: #777;
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    padding: 10px;
+    display: block;
+    width: 95%;
+}
+
+/* Styling form-control Radio
+        button and Checkbox */
+.form-control input[type="radio"],
+.form-control input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+}
+
+.green-highlight{
+    color: #6ae785;
+  }
+
+  .red-highlight {
+    color: rgb(255, 94, 94);
+  }
+
+  .prediction-title{
+    margin-top: 40px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .pred-label{
+    margin-top: 12px;
+  }
