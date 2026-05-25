@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-require('./db');
+const sequelize = require('./db');
 const bcrypt = require("bcrypt")
 const axios = require('axios')
 const session = require('express-session');
@@ -25,7 +25,7 @@ app.use(session({
 
 
 function handleErr(err, req, res, next){
-    if (err.name == 'MongoServerError'){
+    if (err.name === 'SequelizeUniqueConstraintError'){
         return res.json({errMsg: 'This email is already registered to another user'})
     }
     console.log(err)
@@ -105,7 +105,13 @@ app.post('/predict', async (req, res) => {
         proba: Math.round(probas[0][index] * 100),
         text: formattedText
     }
-    await User.updateOne({email: req.session.user.email}, {$push: {predictions: prediction}})
+    let user = await User.findOne({ where: { email: req.session.user.email } })
+    if (user) {
+        const predictions = user.predictions;
+        predictions.push(prediction);
+        user.predictions = predictions;
+        await user.save();
+    }
     res.json({fake: fake, proba: Math.round(probas[0][index] * 100)})
 
 })
@@ -123,7 +129,7 @@ app.post('/register', isLoggedOut, async (req, res) => {
 
 app.post('/login', isLoggedOut, async (req, res) => {
     const {email, password} = req.body
-    let user = await User.findOne({email:email})
+    let user = await User.findOne({ where: { email: email } })
     if (!user)
         return res.json({errMsg: 'Wrong email or password'}) 
     comp = await bcrypt.compare(password, user.password)
@@ -135,7 +141,7 @@ app.post('/login', isLoggedOut, async (req, res) => {
 })
 
 app.get('/sessionInfo', isLoggedIn, async (req, res) => {
-    user = await User.findOne({email: req.session.user.email})
+    user = await User.findOne({ where: { email: req.session.user.email } })
     const {name, email, predictions} = user
     res.json({name: name, email: email, predictions:predictions})
 })
@@ -146,7 +152,11 @@ app.get('*', (req, res) => {
 
 app.use(handleErr)
 
-// Start the server
-app.listen(process.env.PORT, () => {
-  console.log("Server started on port " + process.env.PORT);
+// Sync DB and Start the server
+sequelize.sync().then(() => {
+  app.listen(process.env.PORT || 3000, () => {
+    console.log("Server started on port " + (process.env.PORT || 3000));
+  });
+}).catch(err => {
+  console.error('Unable to connect to the database:', err);
 });
